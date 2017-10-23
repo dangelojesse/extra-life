@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+
+@font-face {
+  font-family: 'furoreregular';
+  src: url('Furore-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+body {
+  width: 1920px;
+  height: 1080px;
+  display: hidden;
+  font-family: 'Roboto', sans-serif;
+  background-color: #1a4c6d;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+legend {
+  font-family: 'furoreregular', sans-serif;
+  font-weight: 300;
+  color: #1a4c6d;
+}
+
+body,
+html,
+#blitz-app,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.el__form {
+  background-color: #f6f7fb;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.el__boxy {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.el__dashboard-top {
+  background-color: #f6f7fb;
+  border-bottom: 10px solid #1a4c6d;
+}
+
+.el__dashboard-bottom {
+  background-color: #fff;
+}
+
+button {
+  font-family: 'furoreregular';
+  border: 0;
+  border-bottom: 4px solid #1ba500;
+  color: #fff;
+  background-color: #7fd836;
+  background-size: 200% auto;
+}
+
+.progress {
+  height: 50px;
+}
+
+.progress--green {
+  font-family: 'furoreregular';
+  background-color: #7fd836;
+  border-bottom: 4px solid #1ba500;
+}
+
+small {
+  font-size: 1.5rem;
+  color: #1ba500;
+}
