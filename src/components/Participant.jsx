@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import { Donor } from './Donor'
@@ -39,14 +40,17 @@ export class Participant extends Component {
 
   render() {
     let donors;
-    let participant = {
-      captain: null
-    };
+    let participant = {};
+    let link = '/';
 
-    if(!_.isEmpty(this.state.basic)) {
+    if(!_.isEmpty(this.state.basic) && _.isEmpty(participant)) {
       participant.name = this.state.basic.displayName;
       participant.image = this.state.basic.avatarImageURL;
-      this.getTeam( this.state.basic.teamID);
+      link = '/team/' + this.state.basic.teamID;
+
+      if(!this.state.teamName) {
+        this.getTeam(this.state.basic.teamID);
+      }
 
       if(this.state.basic.isTeamCaptain) {
         participant.captain = <span className="fa-stack">
@@ -75,7 +79,9 @@ export class Participant extends Component {
           </div>
           <div className="col-sm-4 col-md-3 order-1 pull order-sm-2">
             <h3>{participant.captain} {participant.name}</h3>
-            <h4 className="el__text--green">{this.state.teamName}</h4>
+            <Link to={link}>
+              <h4 className="el__text--green">{this.state.teamName}</h4>
+            </Link>
           </div>
           <div className="col-sm-5 col-md-8 order-3 order-sm-3">
             <GoalProgress total={this.state.basic.totalRaisedAmount} goal={this.state.basic.fundraisingGoal} />

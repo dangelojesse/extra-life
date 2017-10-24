@@ -27,10 +27,20 @@ export class App extends Component {
   handleSubmit() {
     const participant = _.template('https://www.extra-life.org/index.cfm?fuseaction=donordrive.participant&participantID=<%= participantId %>&format=json');
     const team = _.template('https://www.extra-life.org/index.cfm?fuseaction=donordrive.team&teamID=<%= teamId %>&format=json');
+    let id = this.state.participantId;
+    let urlObject;
+    if(!_.isInteger(id)) {
+      urlObject = _.chain(id).replace('?', '')
+                    .split('&')
+                    .map(_.ary(_.partial(_.split, _, '='), 1))
+                    .fromPairs()
+                    .value();
+      id = urlObject.participantID;
+    }
 
     this.setState({loading: true});
 
-    fetch(participant({participantId: this.state.participantId}))
+    fetch(participant({participantId: id}))
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -95,7 +105,7 @@ export class App extends Component {
             <div className="container">
               <div className="row align-items-center el__boxy pb-4">
                 <form className="col-sm-8 offset-sm-2 my-4 justify-content-center">
-                  <p className="text-center p-4"><img src={logo} alt="Extra Life" /></p>
+                  <p className="text-center p-4"><img src={logo} alt="Extra Life" className="el__logo" /></p>
                   <ExtraLifeDataType className="row mb-1"
                                      kind="PARTICIPANT"
                                      id={participantId}
@@ -107,6 +117,18 @@ export class App extends Component {
                   </div>
                 </form>
                 {helloData}
+                <div className="col-sm-10 offset-sm-1">
+                  <h1>Hello!</h1>
+                  <p>
+                    Hope you find this dashboard useful.
+                    Simply enter your participant number or the URL to your Extra Life page into the input above and
+                    select either your participant or team dashboard. Add this into your streaming tool of choice and you can quickly
+                    display your totals during game day.
+                  </p>
+                  <p>
+                    And of course if you'd like to donate to my Extra Life goal this year please <a href="https://www.extra-life.org/index.cfm?fuseaction=donordrive.participant&participantID=247161">click here</a>.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
