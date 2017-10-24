@@ -29,33 +29,38 @@ export class App extends Component {
     const team = _.template('https://www.extra-life.org/index.cfm?fuseaction=donordrive.team&teamID=<%= teamId %>&format=json');
     let id = this.state.participantId;
     let urlObject;
-    if(!_.isInteger(id)) {
-      urlObject = _.chain(id).replace('?', '')
-                    .split('&')
-                    .map(_.ary(_.partial(_.split, _, '='), 1))
-                    .fromPairs()
-                    .value();
-      id = urlObject.participantID;
-    }
 
-    this.setState({loading: true});
+    if(!_.isEmpty(id)) {
+      if(_.isNaN(_.toNumber(id))) {
+        urlObject = _.chain(id).replace('?', '')
+                      .split('&')
+                      .map(_.ary(_.partial(_.split, _, '='), 1))
+                      .fromPairs()
+                      .value();
+        id = urlObject.participantID;
+      }
 
-    fetch(participant({participantId: id}))
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          participant: data
-        });
+      this.setState({loading: true});
 
-        fetch(team({teamId: data.teamID}))
-          .then((response) => response.json())
-          .then((data) => {
-            this.setState({
-              team: data,
-              loading: false
-            });
+      fetch(participant({participantId: id}))
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({
+            participant: data
           });
-    });
+
+          fetch(team({teamId: data.teamID}))
+            .then((response) => response.json())
+            .then((data) => {
+              this.setState({
+                team: data,
+                loading: false
+              });
+            });
+      });
+    } else {
+      this.setState({error: <p className="alert alert-danger">Enter Your URL or Participant Id.</p>})
+    }
   }
 
   render() {
@@ -110,6 +115,7 @@ export class App extends Component {
                                      kind="PARTICIPANT"
                                      id={participantId}
                                      onSearchChange={this.handleParticipantChange} />
+                  {this.state.error}
                   <div className="row">
                     <div className="col">
                       <button onClick={(e) => {e.preventDefault(); this.handleSubmit()}} className="btn-block rounded">SUBMIT</button>
