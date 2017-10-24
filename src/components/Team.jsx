@@ -5,7 +5,7 @@ export class Team extends Component {
 
   render() {
     return (
-      <div class="container-fluid h-100">
+      <div className="container-fluid h-100">
         yay!
       </div>
     );

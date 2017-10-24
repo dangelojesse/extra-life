@@ -12,10 +12,10 @@ export class GoalProgress extends Component {
 
 
     return (
-      <div class="goal-progress">
+      <div className="goal-progress">
         <h2>Donation Goal <small>${this.props.total} of ${this.props.goal}</small></h2>
-        <div class="progress">
-          <div class="progress-bar text-center progress--green" style={{width: progress + '%'}} role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
+        <div className="progress">
+          <div className="progress-bar text-center progress--green" style={{width: progress + '%'}} role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
             {progressPercent}
           </div>
         </div>

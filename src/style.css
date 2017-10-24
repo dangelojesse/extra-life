@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 @font-face {
   font-family: 'furoreregular';
@@ -8,14 +9,16 @@
   font-style: normal;
 }
 
-
+@media (max-width: 576px) {
+  .el__donor,
+  .el__dashboard-top  {
+    text-align: center;
+  }
+}
 
 body {
-  width: 1920px;
-  height: 1080px;
-  display: hidden;
   font-family: 'Roboto', sans-serif;
-  background-color: #1a4c6d;
+  background-color: #0277bd;
 }
 
 h1,
@@ -27,7 +30,7 @@ h6,
 legend {
   font-family: 'furoreregular', sans-serif;
   font-weight: 300;
-  color: #1a4c6d;
+  color: #0277bd;
 }
 
 body,
@@ -50,22 +53,35 @@ html,
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
+.el__avatar {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
 .el__dashboard-top {
   background-color: #f6f7fb;
-  border-bottom: 10px solid #1a4c6d;
+  border-bottom: 10px solid #0277bd;
 }
 
 .el__dashboard-bottom {
   background-color: #fff;
 }
 
+.progress-bar {
+  font-size: 24px;
+}
+
 button {
   font-family: 'furoreregular';
+  font-size: 24px;
   border: 0;
-  border-bottom: 4px solid #1ba500;
   color: #fff;
-  background-color: #7fd836;
+  background-color: #00838f;
+  border-bottom: 4px solid #005662;
   background-size: 200% auto;
+}
+
+button:hover {
+  background-color: #005662;
 }
 
 .progress {
@@ -74,11 +90,23 @@ button {
 
 .progress--green {
   font-family: 'furoreregular';
-  background-color: #7fd836;
-  border-bottom: 4px solid #1ba500;
+  background-color: #00838f;
+  border-bottom: 4px solid #00838f;
 }
 
 small {
   font-size: 1.5rem;
-  color: #1ba500;
+  color: #00838f;
+}
+
+.el__text--green {
+  color: #4fb3bf;
+}
+.el__text--blue {
+  color: #0277bd;
+}
+
+.el__dashboard-selections {
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }

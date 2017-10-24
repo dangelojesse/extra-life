@@ -18,27 +18,47 @@ export class Participant extends Component {
   componentWillMount() {
     const basic = _.template('https://www.extra-life.org/index.cfm?fuseaction=donordrive.participant&participantID=<%= participantId %>&format=json');
     const donors = _.template('https://www.extra-life.org/index.cfm?fuseaction=donordrive.participantDonations&participantID=<%= participantId %>&format=json');
+
     const id = this.props.match.params.id;
 
     fetch(basic({participantId: id}))
       .then((response) => response.json())
       .then((data) => this.setState({basic: data}));
 
-
     fetch(donors({participantId: id}))
       .then((response) => response.json())
       .then((data) => this.setState({donors: data}));
   }
 
+  getTeam(teamID){
+    const team = _.template('https://www.extra-life.org/index.cfm?fuseaction=donordrive.team&teamID=' + teamID + '&format=json');
+    fetch(team({teamtId: teamID}))
+      .then((response) => response.json())
+      .then((data) => {this.setState({teamName: data.name})});
+  }
+
   render() {
     let donors;
+    let participant = {
+      captain: null
+    };
+
+    if(!_.isEmpty(this.state.basic)) {
+      participant.name = this.state.basic.displayName;
+      participant.image = this.state.basic.avatarImageURL;
+      this.getTeam( this.state.basic.teamID);
+
+      if(this.state.basic.isTeamCaptain) {
+        participant.captain = <span className="fa-stack">
+        <i className="fa fa-certificate fa-stack-2x el__text--blue"></i>
+        <i className="fa fa-heart fa-stack-1x text-white"></i>
+      </span>;
+      }
+    }
 
     if(this.state.donors.length > 0) {
-      let id = 1;
-
       donors = this.state.donors.map(function(donor) {
-        id += id;
-        return <Donor id={id}
+        return <Donor key={donor.donorName + donor.createdOn}
                name={donor.donorName}
                image={donor.avatarImageURL}
                donationDate={donor.createdOn}
@@ -47,21 +67,21 @@ export class Participant extends Component {
       });
     };
 
-
     return (
-      <div class="container-fluid">
-        <div class="row el__dashboard-top p-4">
-          <div class="col-md-2">
-            <img src={this.state.basic.avatarImageURL} alt={this.state.basic.displayName} class="rounded border border-success img-fluid" />
+      <div className="container-fluid">
+        <div className="row el__dashboard-top p-4">
+          <div className="col-sm-3 col-md-1 order-2 order-sm-1">
+            <img src={participant.image} alt={participant.captain} className="rounded img-fluid el__avatar" />
           </div>
-          <div class="col-md-3">
-            {this.state.basic.displayName}
+          <div className="col-sm-4 col-md-3 order-1 pull order-sm-2">
+            <h3>{participant.captain} {participant.name}</h3>
+            <h4 className="el__text--green">{this.state.teamName}</h4>
           </div>
-          <div class="col-md-7">
+          <div className="col-sm-5 col-md-8 order-3 order-sm-3">
             <GoalProgress total={this.state.basic.totalRaisedAmount} goal={this.state.basic.fundraisingGoal} />
           </div>
         </div>
-        <div class="row el__dashboard-bottom p-4">
+        <div className="row el__dashboard-bottom p-4">
           {donors}
         </div>
       </div>
