@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+@font-face {
+  font-family: 'furoreregular';
+  src: url('Furore-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media (max-width: 576px) {
+  .el__donor,
+  .el__dashboard-top  {
+    text-align: center;
+  }
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.el__logo {
+  max-width: 50%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #0277bd;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+legend {
+  font-family: 'furoreregular', sans-serif;
+  font-weight: 300;
+  color: #0277bd;
+}
+
+body,
+html,
+#blitz-app,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.el__form {
+  background-color: #f6f7fb;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.el__boxy {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.el__avatar {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.el__dashboard-top {
+  background-color: #f6f7fb;
+  border-bottom: 10px solid #0277bd;
+}
+
+.el__dashboard-bottom {
+  background-color: #fff;
+}
+
+.progress-bar {
+  font-size: 24px;
+}
+
+button {
+  font-family: 'furoreregular';
+  font-size: 24px;
+  border: 0;
+  color: #fff;
+  background-color: #00838f;
+  border-bottom: 4px solid #005662;
+  background-size: 200% auto;
+}
+
+button:hover {
+  background-color: #005662;
+}
+
+.progress {
+  height: 50px;
+}
+
+.progress--green {
+  font-family: 'furoreregular';
+  background-color: #00838f;
+  border-bottom: 4px solid #00838f;
+}
+
+small {
+  font-size: 1.5rem;
+  color: #00838f;
+}
+
+.el__text--green {
+  color: #4fb3bf;
+}
+.el__text--blue {
+  color: #0277bd;
+}
+
+.el__dashboard-selections {
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
