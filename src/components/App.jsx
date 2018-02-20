@@ -64,10 +64,6 @@ export class App extends Component {
 
   render() {
     const participantId = this.state.participantId;
-<<<<<<< HEAD
-=======
-
->>>>>>> 5258e9764406a0dbe88ff59d5a513511aba2b724
     let participant = null;
     let team = null;
     let helloData = null
