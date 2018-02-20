@@ -44,8 +44,9 @@ legend {
 body,
 html,
 #blitz-app,
-#root {
-  height: 100%;
+#root,
+.container-fluid {
+  height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -67,11 +68,12 @@ html,
 
 .el__dashboard-top {
   background-color: #f6f7fb;
-  border-bottom: 10px solid #0277bd;
+  border-bottom: 4px solid #0277bd;
 }
 
 .el__dashboard-bottom {
-  background-color: #fff;
+  height: 100%;
+  background-color: #f6f7fb;
 }
 
 .progress-bar {

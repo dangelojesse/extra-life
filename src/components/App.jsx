@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import _ from 'lodash';
 
 import { ExtraLifeDataType } from './ExtraLifeDataType';
@@ -65,7 +64,6 @@ export class App extends Component {
 
   render() {
     const participantId = this.state.participantId;
-
     let participant = null;
     let team = null;
     let helloData = null
